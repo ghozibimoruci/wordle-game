@@ -49,7 +49,7 @@ export function App() {
           color: char == theWord[idx] ? "p" : (
             theWord.includes(char) && theWord.split("").filter(
               (w) => w == char
-            ).length == inputValue.split("").filter(
+            ).length >= inputValue.split("").filter(
               (w) => w == char
             ).length ? "y" : "b"
           )
@@ -119,7 +119,7 @@ export function App() {
 
   return (
     <div className="container m-auto py-4 md:py-6 lg:py-8 px-4">
-      <div className="flex justify-center mb-20">
+      <div className={`flex justify-center mb-20${onFocusField?" pb-8":""}`}>
         <div className="w-auto relative">
           <h1>Guess Word</h1>
           <div className="absolute start-[100%] top-0">
