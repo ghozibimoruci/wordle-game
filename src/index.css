@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Vite Logo Color Palette */
+:root {
+  --vite-purple: #7462ff;
+  --vite-blue: #3fbcf5;
+  --vite-yellow: #ffcc33;
+  --neutral-white: #ffffff;
+  --neutral-black: #000000;
+}
+
+@layer base {
+  h1 { font-size: 2rem; font-weight: 700; }
+  h2 { font-size: 1.75rem; font-weight: 600; }
+  h3 { font-size: 1.5rem; font-weight: 600; }
+  h4 { font-size: 1.25rem; font-weight: 500; }
+  h5 { font-size: 1rem; font-weight: 500; }
+  h6 { font-size: 0.875rem; font-weight: 400; }
+}
+
+/* Text Colors */
+.text-vite-purple { color: var(--vite-purple); }
+.text-vite-blue { color: var(--vite-blue); }
+.text-vite-yellow { color: var(--vite-yellow); }
+.text-white { color: var(--neutral-white); }
+.text-black { color: var(--neutral-black); }
+
+/* Background Colors */
+.bg-vite-purple { background-color: var(--vite-purple); }
+.bg-vite-blue { background-color: var(--vite-blue); }
+.bg-vite-yellow { background-color: var(--vite-yellow); }
+.bg-white { background-color: var(--neutral-white); }
+.bg-black { background-color: var(--neutral-black); }
+
+/* Border Colors */
+.border-vite-purple { border-color: var(--vite-purple); }
+.border-vite-blue { border-color: var(--vite-blue); }
+.border-vite-yellow { border-color: var(--vite-yellow); }
+.border-white { border-color: var(--neutral-white); }
+.border-black { border-color: var(--neutral-black); }
+
+/* Border Width and Styles */
+.border-1 { border-width: 1px; }
+.border-2 { border-width: 2px; }
+.border-4 { border-width: 4px; }
+.border-8 { border-width: 8px; }
+
+.border-solid { border-style: solid; }
+.border-dashed { border-style: dashed; }
+.border-dotted { border-style: dotted; }
+.border-double { border-style: double; }
+.border-none { border-style: none; }
+
+/* Combined Border Utility Classes */
+.border-vite-purple-solid-1 { border: 1px solid var(--vite-purple); }
+.border-vite-purple-dashed-2 { border: 2px dashed var(--vite-purple); }
+.border-vite-purple-dotted-4 { border: 4px dotted var(--vite-purple); }
+
+.border-vite-blue-solid-1 { border: 1px solid var(--vite-blue); }
+.border-vite-blue-dashed-2 { border: 2px dashed var(--vite-blue); }
+.border-vite-blue-dotted-4 { border: 4px dotted var(--vite-blue); }
+
+.border-vite-yellow-solid-1 { border: 1px solid var(--vite-yellow); }
+.border-vite-yellow-dashed-2 { border: 2px dashed var(--vite-yellow); }
+.border-vite-yellow-dotted-4 { border: 4px dotted var(--vite-yellow); }
+
+.border-white-solid-1 { border: 1px solid var(--neutral-white); }
+.border-white-dashed-2 { border: 2px dashed var(--neutral-white); }
+.border-white-dotted-4 { border: 4px dotted var(--neutral-white); }
+
+.border-black-solid-1 { border: 1px solid var(--neutral-black); }
+.border-black-dashed-2 { border: 2px dashed var(--neutral-black); }
+.border-black-dotted-4 { border: 4px dotted var(--neutral-black); }
+
+/* Utility Classes */
+.border { border-width: 1px; border-style: solid; }
+
+/* Button Variants */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-vite-purple { background-color: var(--vite-purple); color: var(--neutral-white); border: 1px solid var(--vite-purple); }
+.btn-vite-blue { background-color: var(--vite-blue); color: var(--neutral-white); border: 1px solid var(--vite-blue); }
+.btn-vite-yellow { background-color: var(--vite-yellow); color: var(--neutral-black); border: 1px solid var(--vite-yellow); }
+
+.btn-outline-vite-purple { background-color: transparent; color: var(--vite-purple); border: 1px solid var(--vite-purple); }
+.btn-outline-vite-blue { background-color: transparent; color: var(--vite-blue); border: 1px solid var(--vite-blue); }
+.btn-outline-vite-yellow { background-color: transparent; color: var(--vite-yellow); border: 1px solid var(--vite-yellow); }
+
+body {
+  margin: 0;
+}

@@ -1,0 +1,27 @@
+.box{
+  display: flex;
+  justify-content: center;
+  border: solid 1px var(--neutral-white);
+}
+.box.g {
+  background-color: #BEBEBE;
+}
+.box.b {
+  background-color: var(--neutral-black);
+}
+.box.y {
+  background-color: var(--vite-yellow);
+}
+.box.p {
+  background-color: var(--vite-purple);
+}
+.animate-typing {
+  border-right: 4px solid var(--vite-blue);
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-right-color: transparent;
+  }
+}
