@@ -30,6 +30,7 @@ export function App() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target){
       const inputValue = (event.target as HTMLInputElement).value;
+      (event.target as HTMLInputElement).value = inputValue;
       setInputValue(inputValue.substring(0, difficulty || 0));
     }
   };
@@ -198,36 +199,36 @@ export function App() {
                       )
                     }
                   </div>
-                  <div className="fixed lg:relative bottom-0 start-0 w-full h-dvh">
-                    <div className={`flex flex-wrap justify-center relative w-full pb-4 md:pb-6 gap-5${onFocusField?" flex-col items-center":""}`}>
-                        <div className="w-auto">
-                          <button className="btn btn-vite-yellow" onClick={() => resetDifficulty()}>
-                            I Give Up
-                          </button>
-                        </div>
-                        {
-                          onFocusField ? (
-                            <div className="w-max h-[40px] md:h-[40px] lg:h-[60px] animate-typing flex items-center">
-                              <span className="text-[40px] md:text-[40px] lg:text-[60px]">{inputValue || " "}</span>
-                            </div>
-                          ) : (
+                  <div className={`fixed lg:relative ${onFocusField?"top-0 bg-white shadow-lg":"bottom-0"} start-0 w-full py-5`}>
+                        <div className={`flex flex-wrap justify-center relative w-full pb-4 md:pb-6 gap-5${onFocusField?" flex-col items-center":""}`}>
                             <div className="w-auto">
-                              <button className="btn btn-vite-purple" onClick={() => focusField()}>
-                                Type a Guess
+                              <button className="btn btn-vite-yellow" onClick={() => resetDifficulty()}>
+                                I Give Up
                               </button>
                             </div>
-                          )
-                        }
-                      <input
-                        maxlength={difficulty}
-                        type="text" ref={fieldRef}
-                        onKeyDown={handleKeyDown}
-                        onFocus={() => setOnFocusField(true)}
-                        onBlur={() => setOnFocusField(false)}
-                        onInput={handleChange} value={inputValue} 
-                        className="opacity-0 absolute top-0 left-0"
-                      />
-                    </div>
+                            {
+                              onFocusField ? (
+                                <div className="w-max h-[40px] md:h-[40px] lg:h-[60px] animate-typing flex items-center">
+                                  <span className="text-[40px] md:text-[40px] lg:text-[60px]">{inputValue || " "}</span>
+                                </div>
+                              ) : (
+                                <div className="w-auto">
+                                  <button className="btn btn-vite-purple" onClick={() => focusField()}>
+                                    Type a Guess
+                                  </button>
+                                </div>
+                              )
+                            }
+                          <input
+                            maxlength={difficulty}
+                            type="text" ref={fieldRef}
+                            onKeyDown={handleKeyDown}
+                            onFocus={() => setOnFocusField(true)}
+                            onBlur={() => setOnFocusField(false)}
+                            onInput={handleChange} value={inputValue} 
+                            className="opacity-0 absolute top-0 left-0"
+                          />
+                        </div>
                   </div>
                 </>
               )
