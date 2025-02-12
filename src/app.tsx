@@ -29,7 +29,8 @@ export function App() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target){
-      setInputValue((event.target as HTMLInputElement).value);
+      const inputValue = (event.target as HTMLInputElement).value;
+      setInputValue(inputValue.substring(0, difficulty || 0));
     }
   };
 
@@ -197,7 +198,7 @@ export function App() {
                       )
                     }
                   </div>
-                  <div className="fixed lg:relative bottom-0 start-0 w-full">
+                  <div className="fixed lg:relative bottom-0 start-0 w-full h-dvh">
                     <div className={`flex flex-wrap justify-center relative w-full pb-4 md:pb-6 gap-5${onFocusField?" flex-col items-center":""}`}>
                         <div className="w-auto">
                           <button className="btn btn-vite-yellow" onClick={() => resetDifficulty()}>
