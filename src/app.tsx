@@ -199,7 +199,7 @@ export function App() {
                       )
                     }
                   </div>
-                  <div className={`fixed lg:relative ${onFocusField?"top-0 bg-white shadow-lg":"bottom-0"} start-0 w-full py-5`}>
+                  <div className={`fixed lg:relative ${onFocusField?"top-0 bg-white shadow-lg lg:shadow-[none]":"bottom-0"} start-0 w-full py-5`}>
                         <div className={`flex flex-wrap justify-center relative w-full pb-4 md:pb-6 gap-5${onFocusField?" flex-col items-center":""}`}>
                             <div className="w-auto">
                               <button className="btn btn-vite-yellow" onClick={() => resetDifficulty()}>
