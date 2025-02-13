@@ -157,7 +157,7 @@ export function App() {
         )
       }
       {
-        difficulty && (
+        !!difficulty && (
           <>
             {
               isDone ? (
