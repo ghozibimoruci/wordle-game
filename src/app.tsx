@@ -30,7 +30,6 @@ export function App() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target){
       const inputValue = (event.target as HTMLInputElement).value;
-      (event.target as HTMLInputElement).value = inputValue;
       setInputValue(inputValue.substring(0, difficulty || 0).toUpperCase());
     }
   };
