@@ -26,6 +26,13 @@ export function App() {
   const fieldRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
 
+  const setInputValueAndRefValue = (value: string) => {
+    setInputValue(value);
+    if(fieldRef && fieldRef.current){
+      (fieldRef.current as HTMLInputElement).value = value;
+    }
+  }
+
   const isInputValueCorrect = () => {
     const renderArrayTemp = inputValue.split("").map(
       (char, idx, valueArray) => {
@@ -53,7 +60,7 @@ export function App() {
         idx == indexAttemp - 1 ? renderArrayTemp : array
       ))
     ))
-    setInputValue("");
+    setInputValueAndRefValue("");
     if(renderArrayTemp.every(
       (char) => char.color == "p"
     )){
@@ -65,7 +72,7 @@ export function App() {
     }else{
       setIndexAttemp(indexAttemp+1);
     }
-    setInputValue("");
+    setInputValueAndRefValue("");
     blurField();
   }
 
@@ -90,7 +97,7 @@ export function App() {
     setIndexAttemp(1);
     setIsWin(false);
     setIsDone(false);
-    setInputValue("");
+    setInputValueAndRefValue("");
   }
 
   const focusField = () => {
