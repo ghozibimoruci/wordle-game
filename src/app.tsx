@@ -3,7 +3,6 @@ import { length3 } from './assets/length3';
 import { length4 } from './assets/length4';
 import { length5 } from './assets/length5';
 import './app.css'
-import React from 'preact/compat';
 import { Hint } from "./hint";
 
 enum DifficultyEnum {
@@ -26,19 +25,6 @@ export function App() {
   const [onFocusField, setOnFocusField] = useState<boolean>(false);
   const fieldRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target){
-      const inputValue = (event.target as HTMLInputElement).value;
-      setInputValue(inputValue.slice(0, difficulty).toUpperCase());
-    }
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && inputValue.length == difficulty) {
-      isInputValueCorrect();
-    }
-  };
 
   const isInputValueCorrect = () => {
     const renderArrayTemp = inputValue.split("").map(
@@ -227,11 +213,25 @@ export function App() {
                             }
                           <input
                             maxlength={difficulty}
+                            maxLength={difficulty}
                             type="text" ref={fieldRef}
-                            onKeyDown={handleKeyDown}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter" && inputValue.length == difficulty) {
+                                isInputValueCorrect();
+                              }
+                            }}
                             onFocus={() => setOnFocusField(true)}
                             onBlur={() => setOnFocusField(false)}
-                            onInput={handleChange} value={inputValue} 
+                            onInput={(event) => {
+                              if(event.target){
+                                const newInputValue = (event.target as HTMLInputElement).value;
+                                if(!(inputValue.length == difficulty && newInputValue.length > difficulty)){
+                                  setInputValue(newInputValue.toUpperCase());
+                                }else{
+                                  event.currentTarget.value = newInputValue.slice(0, difficulty).toUpperCase();
+                                }
+                              }
+                            }}
                             className="opacity-0 absolute top-0 left-0 w-0"
                           />
                         </div>
