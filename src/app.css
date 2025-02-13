@@ -7,6 +7,9 @@
   background-color: #BEBEBE;
 }
 .box.b {
+  background-color: var(--vite-blue);
+}
+.box.d {
   background-color: var(--neutral-black);
 }
 .box.y {

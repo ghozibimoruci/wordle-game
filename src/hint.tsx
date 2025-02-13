@@ -57,6 +57,9 @@ export const Hint = () => {
                             <li>⚫{" "}
                             Letter is not in the word.
                             </li>
+                            <li>🔵{" "}
+                            Letter appears more than once in the word.
+                            </li>
                         </ul>
                         </ul>
 

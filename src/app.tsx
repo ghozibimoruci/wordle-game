@@ -31,7 +31,7 @@ export function App() {
     if(event.target){
       const inputValue = (event.target as HTMLInputElement).value;
       (event.target as HTMLInputElement).value = inputValue;
-      setInputValue(inputValue.substring(0, difficulty || 0));
+      setInputValue(inputValue.substring(0, difficulty || 0).toUpperCase());
     }
   };
 
@@ -43,18 +43,25 @@ export function App() {
 
   const isInputValueCorrect = () => {
     const renderArrayTemp = inputValue.split("").map(
-      (char, idx) => (
-        {
-          text: inputValue[idx].toUpperCase(),
-          color: char == theWord[idx] ? "p" : (
-            theWord.includes(char) && theWord.split("").filter(
-              (w) => w == char
-            ).length >= inputValue.split("").filter(
-              (w) => w == char
-            ).length ? "y" : "b"
-          )
-        }
-      )
+      (char, idx, valueArray) => {
+        const countCharWord = theWord.split("").filter(
+          (w) => w == char
+        ).length;
+        const countCharValue = valueArray.filter(
+          (w) => w == char
+        ).length;
+
+        return (
+          {
+            text: char,
+            color: 
+              theWord.includes(char) ? (
+                countCharWord > countCharValue ? "b"
+                : char == theWord[idx] ? "p" : "y"
+              ) : "d"
+          }
+        )
+      }
     )
     setRenderBox(prev => (
       prev.map((array, idx) => (
@@ -87,7 +94,7 @@ export function App() {
       })
     );
     setRenderBox(Array.from(Array(5).keys()).map(_ => renderBoxArray));
-    setTheWord(randomData);
+    setTheWord(randomData.toUpperCase());
     setDifficulty(difficulty);
   })
 
@@ -226,7 +233,7 @@ export function App() {
                             onFocus={() => setOnFocusField(true)}
                             onBlur={() => setOnFocusField(false)}
                             onInput={handleChange} value={inputValue} 
-                            className="opacity-0 absolute top-0 left-0"
+                            className="opacity-0 absolute top-0 left-0 w-0"
                           />
                         </div>
                   </div>
