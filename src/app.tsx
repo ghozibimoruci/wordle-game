@@ -13,7 +13,7 @@ enum DifficultyEnum {
 }
 
 export function App() {
-  const [difficulty, setDifficulty] = useState<DifficultyEnum | null>(null);
+  const [difficulty, setDifficulty] = useState<DifficultyEnum | 0>(0);
   const [theWord, setTheWord] = useState<string>("");
   const [renderBox, setRenderBox] = useState<Array<{
     color: string;
@@ -30,7 +30,7 @@ export function App() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target){
       const inputValue = (event.target as HTMLInputElement).value;
-      setInputValue(inputValue.substring(0, difficulty || 0).toUpperCase());
+      setInputValue(inputValue.slice(0, difficulty).toUpperCase());
     }
   };
 
@@ -98,7 +98,7 @@ export function App() {
   })
 
   const resetDifficulty = () => {
-    setDifficulty(null);
+    setDifficulty(0);
     setTheWord("");
     setRenderBox([]);
     setIndexAttemp(1);
