@@ -205,12 +205,37 @@ export function App() {
                                 I Give Up
                               </button>
                             </div>
+                            
+                            <input
+                              spellcheck={false}
+                              autocorrect={"off"}
+                              autoCorrect={"off"}
+                              autocomplete={"off"}
+                              autoComplete={"off"}
+                              maxlength={difficulty}
+                              maxLength={difficulty}
+                              type="text" ref={fieldRef}
+                              onKeyDown={(event) => {
+                                if (event.key === "Enter" && inputValue.length == difficulty) {
+                                  isInputValueCorrect();
+                                }
+                              }}
+                              onFocus={() => setOnFocusField(true)}
+                              onBlur={() => setOnFocusField(false)}
+                              onInput={(event) => {
+                                const newInputValue = event.currentTarget.value.replace(/[^a-zA-Z]/g, '');
+                                if(!(inputValue.length == difficulty && newInputValue.length > difficulty)){
+                                  setInputValueAndRefValue(newInputValue.toUpperCase());
+                                }else{
+                                  event.currentTarget.value = newInputValue.slice(0, difficulty).toUpperCase();
+                                }
+                              }}
+                              className={onFocusField?
+                                "border-2 border-vite-blue border-solid rounded-xl p-3 text-[20px] w-[120px]"
+                                :"opacity-0 absolute top-0 left-0 w-0"}
+                            />
                             {
-                              onFocusField ? (
-                                <div className="w-max h-[40px] md:h-[40px] lg:h-[60px] animate-typing flex items-center">
-                                  <span className="text-[40px] md:text-[40px] lg:text-[60px]">{inputValue || " "}</span>
-                                </div>
-                              ) : (
+                              !onFocusField && (
                                 <div className="w-auto">
                                   <button className="btn btn-vite-purple" onClick={() => focusField()}>
                                     Type a Guess
@@ -218,29 +243,6 @@ export function App() {
                                 </div>
                               )
                             }
-                          <input
-                            maxlength={difficulty}
-                            maxLength={difficulty}
-                            type="text" ref={fieldRef}
-                            onKeyDown={(event) => {
-                              if (event.key === "Enter" && inputValue.length == difficulty) {
-                                isInputValueCorrect();
-                              }
-                            }}
-                            onFocus={() => setOnFocusField(true)}
-                            onBlur={() => setOnFocusField(false)}
-                            onInput={(event) => {
-                              if(event.target){
-                                const newInputValue = (event.target as HTMLInputElement).value;
-                                if(!(inputValue.length == difficulty && newInputValue.length > difficulty)){
-                                  setInputValue(newInputValue.toUpperCase());
-                                }else{
-                                  event.currentTarget.value = newInputValue.slice(0, difficulty).toUpperCase();
-                                }
-                              }
-                            }}
-                            className="opacity-0 absolute top-0 left-0 w-0"
-                          />
                         </div>
                   </div>
                 </>
